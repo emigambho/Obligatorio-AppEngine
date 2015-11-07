@@ -14,7 +14,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping("/customer fedeee")
+@RequestMapping("/customer")
 public class CustomerController {
 
 	//cambio en customer controller
