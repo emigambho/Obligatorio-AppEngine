@@ -16,7 +16,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-	
+
+	//cambio en customer controller
+
 	@RequestMapping(value="/addCustomerPage", method = RequestMethod.GET)
 	public String getAddCustomerPage(ModelMap model) {
 
