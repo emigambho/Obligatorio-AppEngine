@@ -1,0 +1,23 @@
+<component name="libraryTable">
+  <library name="aopalliance-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/aopalliance-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-aop-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-asm-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-beans-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-context-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-context-support-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-core-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-expression-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-web-3.1.1.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Prueba Spring/lib/spring-webmvc-3.1.1.RELEASE.jar!/" />
+      <root url="jar://D:/Emiliano/appengine-java-sdk-1.9.27/lib/shared/appengine-local-runtime-shared.jar!/" />
+      <root url="jar://D:/Emiliano/appengine-java-sdk-1.9.27/lib/shared/el-api.jar!/" />
+      <root url="jar://D:/Emiliano/appengine-java-sdk-1.9.27/lib/shared/jsp-api.jar!/" />
+      <root url="jar://D:/Emiliano/appengine-java-sdk-1.9.27/lib/shared/servlet-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
