@@ -4,12 +4,16 @@ import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import ort.obligatorio.appengine.estacionamiento.Estacionamiento;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -117,8 +121,16 @@ public class CustomerController {
 	    
 	    model.addAttribute("customerList",  customers);
 	    
-		return "list";
+		return "listrenombrado";
 
 	}
-	
+
+	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	public @ResponseBody Estacionamiento listar() {
+		Estacionamiento	e = new Estacionamiento();
+		e.setNombre("nombre del estacionamiento");
+		e.setPuntaje(5);
+		return e;
+	}
+
 }
