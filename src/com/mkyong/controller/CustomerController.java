@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import ort.obligatorio.appengine.estacionamiento.Estacionamiento;
+import ort.obligatorio.appengine.estacionamiento.Parcela;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -127,10 +128,49 @@ public class CustomerController {
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public @ResponseBody Estacionamiento listar() {
+
 		Estacionamiento	e = new Estacionamiento();
 		e.setNombre("nombre del estacionamiento");
 		e.setPuntaje(5);
-		return e;
+		List<Parcela> parcelas = new ArrayList<Parcela>();
+		Parcela parcela = new Parcela();
+		parcela.setDescripcion("Parcela 1");
+		parcela.setId("1");
+		parcelas.add(parcela);
+		parcela = new Parcela();
+		parcela.setDescripcion("Parcela 2");
+		parcela.setId("2");
+		parcelas.add(parcela);
+		e.setParcelas(parcelas);
+
+		Entity entityEstacionamiento = new Entity("Estacionamiento", e.getNombre());
+		entityEstacionamiento.setProperty("nombre", e.getNombre());
+		entityEstacionamiento.setProperty("puntaje", e.getPuntaje());
+		/*List<String> strings = new ArrayList<String>();
+		for (Parcela p : parcelas) {
+			strings.add(p.toString());
+		}
+		entityEstacionamiento.setProperty("parcelas", strings);*/
+		entityEstacionamiento.setProperty("parcelas", e.getParcelas());
+
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		datastore.put(entityEstacionamiento);
+
+
+
+		datastore = DatastoreServiceFactory.getDatastoreService();
+
+		Query query = new Query("Estacionamiento");
+		query.addFilter("nombre", FilterOperator.EQUAL, "nombre del estacionamiento");
+		PreparedQuery pq = datastore.prepare(query);
+		Entity estacionamientoEnDataStore = pq.asSingleEntity();
+		Estacionamiento e2 = new Estacionamiento();
+		e2.setPuntaje(Double.valueOf(estacionamientoEnDataStore.getProperty("puntaje").toString()).doubleValue());
+		e2.setNombre(estacionamientoEnDataStore.getProperty("nombre").toString());
+		//List<String> stringsdedatastore = (List<String>)estacionamientoEnDataStore.getProperty("parcelas");
+		e2.setParcelas((List<Parcela>)estacionamientoEnDataStore.getProperty("parcelas"));
+
+		return e2;
 	}
 
 }
