@@ -2,6 +2,9 @@ package com.mkyong.controller;
 
 import com.google.appengine.api.datastore.*;
 import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+import com.google.appengine.repackaged.com.google.gson.Gson;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,6 +17,8 @@ import ort.obligatorio.appengine.estacionamiento.Estacionamiento;
 import ort.obligatorio.appengine.estacionamiento.Parcela;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -126,6 +131,29 @@ public class CustomerController {
 
 	}
 
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+	public void login(HttpServletRequest req, HttpServletResponse resp)
+			throws IOException {
+		UserService userService = UserServiceFactory.getUserService();
+
+		String thisURL = req.getRequestURI();
+
+		resp.setContentType("text/html");
+		if (req.getUserPrincipal() != null) {
+			resp.getWriter().println("<p>Hello, " +
+					req.getUserPrincipal().getName() +
+					"!  You can <a href=\"" +
+					userService.createLogoutURL(thisURL) +
+					"\">sign out</a>.</p>");
+		} else {
+			//resp.getWriter().println("<p>Please <a href=\"" +
+			//		userService.createLoginURL(thisURL) +
+			//		"\">sign in</a>.</p>");
+			resp.sendRedirect(userService.createLoginURL(thisURL));
+		}
+	}
+
+
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public @ResponseBody Estacionamiento listar() {
 
@@ -143,24 +171,39 @@ public class CustomerController {
 		parcelas.add(parcela);
 		e.setParcelas(parcelas);
 
-		Entity entityEstacionamiento = new Entity("Estacionamiento", e.getNombre());
+		/*Entity entityEstacionamiento = new Entity("Estacionamiento", e.getNombre());
 		entityEstacionamiento.setProperty("nombre", e.getNombre());
 		entityEstacionamiento.setProperty("puntaje", e.getPuntaje());
-		/*List<String> strings = new ArrayList<String>();
-		for (Parcela p : parcelas) {
-			strings.add(p.toString());
-		}
-		entityEstacionamiento.setProperty("parcelas", strings);*/
+		//List<String> strings = new ArrayList<String>();
+		//for (Parcela p : parcelas) {
+		//	strings.add(p.toString());
+		//}
+		//entityEstacionamiento.setProperty("parcelas", strings);
 		entityEstacionamiento.setProperty("parcelas", e.getParcelas());
 
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		datastore.put(entityEstacionamiento);
+		*/
 
+		/*Key key = KeyFactory.createKey("Estacionamiento", e.getNombre());
+		String estacionamientoJson = new Gson().toJson(e);
+		Entity entityEstacionamiento = new Entity("Estacionamiento", key);
+		entityEstacionamiento.setProperty("id", e.getNombre());
+		entityEstacionamiento.setProperty("object", estacionamientoJson);
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		datastore.put(entityEstacionamiento);
 
 
 		datastore = DatastoreServiceFactory.getDatastoreService();
 
 		Query query = new Query("Estacionamiento");
+		query.addFilter("id", FilterOperator.EQUAL, "nombre del estacionamiento");
+		PreparedQuery pq = datastore.prepare(query);
+		Entity estacionamientoEnDataStore = pq.asSingleEntity();
+		String json = estacionamientoEnDataStore.getProperty("object").toString();
+		Estacionamiento estacionamientoDesdeJson = new Gson().fromJson(json, Estacionamiento.class);*/
+
+		/*Query query = new Query("Estacionamiento");
 		query.addFilter("nombre", FilterOperator.EQUAL, "nombre del estacionamiento");
 		PreparedQuery pq = datastore.prepare(query);
 		Entity estacionamientoEnDataStore = pq.asSingleEntity();
@@ -168,9 +211,10 @@ public class CustomerController {
 		e2.setPuntaje(Double.valueOf(estacionamientoEnDataStore.getProperty("puntaje").toString()).doubleValue());
 		e2.setNombre(estacionamientoEnDataStore.getProperty("nombre").toString());
 		//List<String> stringsdedatastore = (List<String>)estacionamientoEnDataStore.getProperty("parcelas");
-		e2.setParcelas((List<Parcela>)estacionamientoEnDataStore.getProperty("parcelas"));
+		e2.setParcelas((List<Parcela>)estacionamientoEnDataStore.getProperty("parcelas"));*/
 
-		return e2;
+		//return estacionamientoDesdeJson;
+		return e;
 	}
 
 }
