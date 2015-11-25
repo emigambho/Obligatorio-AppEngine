@@ -38,5 +38,6 @@
     <orderEntry type="library" exported="" name="AppEngine Dev 1.9.27" level="application_server_libraries" />
     <orderEntry type="library" name="AppEngine API" level="project" />
     <orderEntry type="library" name="aopalliance-1.0" level="project" />
+    <orderEntry type="library" name="jquery" level="application" />
   </component>
 </module>
