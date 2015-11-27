@@ -7,6 +7,8 @@ import ort.obligatorio.appengine.estacionamiento.Calificacion;
 import ort.obligatorio.appengine.estacionamiento.Estacionamiento;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class EstacionamientoManager {
 
@@ -87,4 +89,40 @@ public class EstacionamientoManager {
         entity.setProperty("object", estacionamientoJson);
         datastore.put(entity);
     }
+
+    public static Estacionamiento obtenerEstacionamientoDeUsuario(String usuario) {
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Query query = new Query("Usuario");
+        query.addFilter("id", Query.FilterOperator.EQUAL, usuario);
+        PreparedQuery pq = datastore.prepare(query);
+        Entity userFromDB = pq.asSingleEntity();
+
+        String estacionamiento = userFromDB.getProperty("estacionamiento").toString();
+
+        return obtenerEstacionamiento(estacionamiento);
+    }
+
+    public static String obtenerResponsableDeEstacionamiento(String nombreEstacionamiento) {
+        Estacionamiento e = obtenerEstacionamiento(nombreEstacionamiento);
+        return e.getMailResponsable();
+    }
+
+    public static List<String> obtenerNombreDeTodos() {
+        List<String> todos = new ArrayList<>();
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Query query = new Query("Estacionamiento");
+        query.addProjection(new PropertyProjection("id", String.class));
+        PreparedQuery pq = datastore.prepare(query);
+        Iterator<Entity> i = pq.asIterator();
+        while(i.hasNext()) {
+            Entity entity = i.next();
+            String id = entity.getProperty("id").toString();
+            //todos.add(new Gson().fromJson(json, Estacionamiento.class));
+            todos.add(id);
+        }
+
+        return todos;
+    }
+
 }

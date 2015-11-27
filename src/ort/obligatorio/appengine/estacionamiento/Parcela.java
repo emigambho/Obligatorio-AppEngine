@@ -1,8 +1,5 @@
 package ort.obligatorio.appengine.estacionamiento;
 
-/**
- * Created by fede on 08/11/2015.
- */
 public class Parcela {
 
     private String id;

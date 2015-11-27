@@ -2,9 +2,6 @@ package ort.obligatorio.appengine.estacionamiento;
 
 import java.util.List;
 
-/**
- * Created by fede on 08/11/2015.
- */
 public class Estacionamiento {
 
     private String nombre;
@@ -12,8 +9,20 @@ public class Estacionamiento {
     private List<Parcela> parcelas;
     private double puntaje = -1;
     private int capacidad;
+
+    public String getMailResponsable() {
+        return mailResponsable;
+    }
+
+    public void setMailResponsable(String mailResponsable) {
+        this.mailResponsable = mailResponsable;
+    }
+
     private String horaDeApertura;
     private String horaDeCierre;
+    private double latitud;
+    private double longitud;
+    private String mailResponsable;
 
     public int getCapacidad() {
         return capacidad;
@@ -70,5 +79,21 @@ public class Estacionamiento {
 
     public void setPuntaje(double puntaje) {
         this.puntaje = puntaje;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
     }
 }

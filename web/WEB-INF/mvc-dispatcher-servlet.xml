@@ -12,6 +12,7 @@
 	<!--<context:component-scan base-package="com.mkyong.controller" />-->
 	<context:component-scan base-package="ort.obligatorio.appengine.controller" />
 	<mvc:annotation-driven />
+	<mvc:resources mapping="/bootstrap/**" location="/resources/" />
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
