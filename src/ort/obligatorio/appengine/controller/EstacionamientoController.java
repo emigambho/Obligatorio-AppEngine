@@ -145,7 +145,7 @@ public class EstacionamientoController {
             String to = EstacionamientoManager.obtenerResponsableDeEstacionamiento(nombreEstacionamiento);
             msg.addRecipient(Message.RecipientType.TO,
                     new InternetAddress(to, to.substring(0, to.lastIndexOf("@"))));
-            msg.setSubject("Nueva calificación para " + nombreEstacionamiento);
+            msg.setSubject("Nueva calificacion para " + nombreEstacionamiento);
             msg.setText(msgBody);
             Transport.send(msg);
 

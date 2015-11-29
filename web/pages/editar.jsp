@@ -63,8 +63,10 @@
 			Capacidad: <input type="text" style="width: 185px;" maxlength="10" name="capacidad" id="capacidad" value="<%=item.getCapacidad() %>"
 							  pattern="[0-9]{1,4}" title="Valor numerico entre 1 y 1000" required="required"/>
 			<br><br>
-			Horario, desde: <input type="text" style="width: 185px;" maxlength="10" name="apertura" id="apertura" value="<%=item.getHoraDeApertura() %>" /> hasta:
-			<input type="text" style="width: 185px;" maxlength="10" name="cierre" id="cierre" value="<%=item.getHoraDeCierre() %>" required="required"/>
+			Horario, desde: <input type="text" style="width: 185px;" maxlength="10" name="apertura" id="apertura" value="<%=item.getHoraDeApertura() %>"
+								   pattern="[0-2]{0,1}[0-9]:[0-5][0-9]" title="Hora válida, en formato 12 o 24." required="required"/> hasta:
+							<input type="text" style="width: 185px;" maxlength="10" name="cierre" id="cierre" value="<%=item.getHoraDeCierre() %>"
+								   pattern="[0-2]{0,1}[0-9]:[0-5][0-9]" title="Hora válida, en formato 12 o 24." required="required"/>
 			<br><br>
 			<br>
 

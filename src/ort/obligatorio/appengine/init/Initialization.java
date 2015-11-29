@@ -37,7 +37,7 @@ public class Initialization {
         e.setPuntaje(4d);
         e.setLatitud(-34.906540);
         e.setLongitud(-56.200819);
-        e.setMailResponsable("appenlanube.usuario@gmail.com");
+        e.setMailResponsable("appenlanube.adm@gmail.com");
         List<Parcela> parcelas = new ArrayList<Parcela>();
         Parcela parcela = new Parcela();
         parcela.setDescripcion("Parcela 1");
@@ -76,7 +76,7 @@ public class Initialization {
         e2.setPuntaje(4d);
         e2.setLatitud(-34.894440);
         e2.setLongitud(-56.167600);
-        e2.setMailResponsable("appenlanube.usuario@gmail.com");
+        e2.setMailResponsable("appenlanube.adm@gmail.com");
         List<Parcela> parcelas2 = new ArrayList<Parcela>();
         Parcela parcela2 = new Parcela();
         parcela2.setDescripcion("Parcela 1");
