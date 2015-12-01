@@ -91,16 +91,16 @@ public class EstacionamientoController {
         String nuevoComentario = request.getParameter("comentario");
         String nombreEstacionamiento =  request.getParameter("originalName");
 
-        String calificacion = request.getParameter("calificacion");
-        if (calificacion==null || calificacion.equals("")) {
-            calificacion = "0";
-        }
+//        String calificacion = request.getParameter("calificacion");
+//        if (calificacion==null || calificacion.equals("")) {
+//            calificacion = "0";
+//        }
         Calificacion nuevaCalificacion = new Calificacion();
         String usuario = obtenerUsuario();
         usuario = usuario.substring(0, usuario.lastIndexOf("@"));
         nuevaCalificacion.setUsuario(usuario);
         nuevaCalificacion.setComentario(nuevoComentario);
-        nuevaCalificacion.setCalificacion(Integer.parseInt(calificacion));
+//        nuevaCalificacion.setCalificacion(Integer.parseInt(calificacion));
         EstacionamientoManager.agregarComentarioAEstacionamiento(nombreEstacionamiento, nuevaCalificacion);
 
         return new ModelAndView("redirect:adm");

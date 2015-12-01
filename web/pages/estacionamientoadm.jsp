@@ -82,7 +82,7 @@
 				   value="<%=item.getNombre() %>" />
 
 			<table>
-				<tr>
+				<!--<tr>
 					<td>Calificacion:</td>
 					<td>
 						<input type="radio" name="calificacion" value="1">1
@@ -91,7 +91,7 @@
 						<input type="radio" name="calificacion" value="4">4
 						<input type="radio" name="calificacion" value="5">5
 					</td>
-				</tr>
+				</tr>-->
 				<tr>
 					<td>Comentario:</td>
 					<td>
