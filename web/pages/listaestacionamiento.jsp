@@ -78,7 +78,7 @@
         <ul>
             <%
                 for (Calificacion c : seleccionado.getCalificaciones()) { %>
-                <li><%= c.getCalificacion() + ", " + c.getComentario()%></li>
+                <li>Puntaje: <%= c.getCalificacion()%>, Calificacion: <%= c.getComentario()%></li>
             <%	}
             %>
         </ul>
@@ -89,24 +89,26 @@
       <form method="post" action="agregarCalificacionUsuario" >
         <input type="hidden" name="originalName" id="originalName" value="<%=seleccionado.getNombre() %>" />
 
+        Calificacion:
+        <input type="radio" name="calificacion" value="1" required="required">1
+        <input type="radio" name="calificacion" value="2" required="required">2
+        <input type="radio" name="calificacion" value="3" required="required">3
+        <input type="radio" name="calificacion" value="4" required="required">4
+        <input type="radio" name="calificacion" value="5" required="required">5
+
         <table>
           <tr>
-            <td>Calificacion:</td>
-            <td>
-              <input type="radio" name="calificacion" value="1">1
-              <input type="radio" name="calificacion" value="2">2
-              <input type="radio" name="calificacion" value="3">3
-              <input type="radio" name="calificacion" value="4">4
-              <input type="radio" name="calificacion" value="5">5
-            </td>
           </tr>
           <tr>
             <td>Comentario:</td>
+          </tr>
+          <tr>
             <td>
-              <textarea cols="75" rows="5" maxlength="300" name="comentario" id="comentario"></textarea>
+              <textarea cols="75" rows="5" maxlength="300" name="comentario" id="comentario" required="required"></textarea>
             </td>
           </tr>
         </table>
+        <br>
         <input type="submit" class="update btn btn-sm btn-default" title="agregarCalificacionUsuario" value="Agregar comentario" />
       </form>
 

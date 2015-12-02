@@ -37,7 +37,6 @@
 	</nav>
 
 	<div class="container">
-
 		<h1>Estacionamiento para administrador</h1>
 
 		<br>
@@ -56,6 +55,7 @@
 		<br>
 		<a href="editar/<%=item.getNombre()%>">Editar</a>
 		<br>
+		<br>
 		<!--Parcelas:
 		<br>
 		<%
@@ -67,12 +67,13 @@
 		<br>-->
 		Comentarios:
 		<br>
+		<ul>
 		<%
 			for (Calificacion c : item.getCalificaciones()) { %>
-		- <%= c.getCalificacion() + ", " + c.getComentario() + " - " + c.getUsuario()%>
-		<br>
+			<li>Puntaje: <%= c.getCalificacion()%>, Calificacion: <%= c.getComentario()%>, Usuario: <%= c.getUsuario()%></li>
 		<%	}
 		%>
+		</ul>
 		<br>
 		<br>
 		Agregar comentario:
@@ -94,13 +95,16 @@
 				</tr>-->
 				<tr>
 					<td>Comentario:</td>
+				</tr>
+				<tr>
 					<td>
 						<!--<input type="text" style="width: 400px; height: 100px;" maxlength="300" name="comentario" id="comentario"
 							   value="" />-->
-						<textarea cols="75" rows="5" maxlength="300" name="comentario" id="comentario"></textarea>
+						<textarea cols="75" rows="5" maxlength="300" name="comentario" id="comentario" required="required"></textarea>
 					</td>
 				</tr>
 			</table>
+			<br>
 			<input type="submit" class="update btn btn-sm btn-default" title="agregarComentario" value="Agregar comentario" />
 		</form>
 

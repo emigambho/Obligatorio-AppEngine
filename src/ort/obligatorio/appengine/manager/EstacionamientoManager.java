@@ -125,4 +125,19 @@ public class EstacionamientoManager {
         return todos;
     }
 
+    public static List<Estacionamiento> obtenerTodos() {
+        List<Estacionamiento> todos = new ArrayList<>();
+
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Query query = new Query("Estacionamiento");
+        PreparedQuery pq = datastore.prepare(query);
+        Iterator<Entity> i = pq.asIterator();
+        while(i.hasNext()) {
+            Entity entity = i.next();
+            String json = entity.getProperty("object").toString();
+            todos.add(new Gson().fromJson(json, Estacionamiento.class));
+        }
+
+        return todos;
+    }
 }

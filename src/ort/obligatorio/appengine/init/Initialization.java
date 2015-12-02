@@ -17,6 +17,30 @@ public class Initialization {
 
         initEstacionamientos();
         initUsuarios();
+        initNotificaciones();
+
+    }
+
+    private void initNotificaciones() {
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        Query query = new Query("Clave");
+        PreparedQuery pq = datastore.prepare(query);
+        Iterable<Entity> i = pq.asIterable();
+        List<Key> list = new ArrayList();
+        for (Entity e : i) {
+            list.add(e.getKey());
+        }
+        datastore.delete(list);
+
+        String clave = "12345";
+        List<String> lista = new ArrayList<>();
+        lista.add("Aviso importante del estacionamiento!");
+        lista.add("Otro aviso importante del estacionamiento!");
+        Key key = KeyFactory.createKey("Clave", clave);
+        Entity entity = new Entity("Clave", key);
+        entity.setProperty("clave", clave);
+        entity.setProperty("notificaciones", lista);
+        datastore.put(entity);
     }
 
     private void initEstacionamientos() {

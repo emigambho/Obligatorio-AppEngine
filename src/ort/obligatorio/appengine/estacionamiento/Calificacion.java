@@ -5,14 +5,14 @@ package ort.obligatorio.appengine.estacionamiento;
  */
 public class Calificacion {
 
-    private int calificacion;
+    private double calificacion;
     private String comentario;
 
-    public int getCalificacion() {
+    public double getCalificacion() {
         return calificacion;
     }
 
-    public void setCalificacion(int calificacion) {
+    public void setCalificacion(double calificacion) {
         this.calificacion = calificacion;
     }
 

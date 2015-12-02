@@ -9,7 +9,6 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<!--<context:component-scan base-package="com.mkyong.controller" />-->
 	<context:component-scan base-package="ort.obligatorio.appengine" />
 	<mvc:annotation-driven />
 	<mvc:resources mapping="/bootstrap/**" location="/resources/" />
@@ -23,7 +22,6 @@
 		</property>
 	</bean>
 
-	<!-- agregado -->
 
 	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">

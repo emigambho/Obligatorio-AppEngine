@@ -9,6 +9,12 @@ public class Estacionamiento {
     private List<Parcela> parcelas;
     private double puntaje = -1;
     private int capacidad;
+    private String horaDeApertura;
+    private String horaDeCierre;
+    private double latitud;
+    private double longitud;
+    private String mailResponsable;
+
 
     public String getMailResponsable() {
         return mailResponsable;
@@ -17,12 +23,6 @@ public class Estacionamiento {
     public void setMailResponsable(String mailResponsable) {
         this.mailResponsable = mailResponsable;
     }
-
-    private String horaDeApertura;
-    private String horaDeCierre;
-    private double latitud;
-    private double longitud;
-    private String mailResponsable;
 
     public int getCapacidad() {
         return capacidad;

@@ -45,15 +45,40 @@ public class Servicios {
         } catch (Exception e) {
             return false;
         }
-        ServiciosManager.agregarNotificacionAClave(clave, minutos);
+        ServiciosManager.agregarAvisoAClave(clave, minutos);
         return true;
     }
 
+    @RequestMapping(value="/calificar", method = RequestMethod.POST)
+    public @ResponseBody boolean calificarEstacionamiento(HttpServletRequest request) {
+        String estacionamiento = request.getParameter("idEstacionamiento");
+        String puntaje = request.getParameter("puntaje");
+        String comentario = request.getParameter("comentario");
+        String usuario = request.getParameter("usuario");
+
+        boolean resultado = ServiciosManager.agregarCalificacion(estacionamiento, puntaje, comentario, usuario);
+
+        return resultado;
+    }
 
 
+    @RequestMapping(value="/estacionamientos", method = RequestMethod.GET)
+    public @ResponseBody List<Estacionamiento> listaDeEstacionamientos(HttpServletRequest request) {
+        List<Estacionamiento> lista = ServiciosManager.obtenerEstacionamientos();
+        if (lista==null) {
+            lista = new ArrayList<>();
+        }
+        return lista;
+    }
 
+    @RequestMapping(value="/notificaciones/{clave}", method = RequestMethod.GET)
+    public @ResponseBody List<String> obtenerNotificaciones(@PathVariable String clave, HttpServletRequest request) {
+        List<String> notificaciones = new ArrayList<>();
 
+        notificaciones = ServiciosManager.obtenerNotificacionesParaClave(clave);
 
+        return notificaciones;
+    }
 
     @RequestMapping(value="/prueba", method = RequestMethod.GET)
     public @ResponseBody Estacionamiento editarDatosDeEstacionamiento(HttpServletRequest request, ModelMap model) {
@@ -61,14 +86,5 @@ public class Servicios {
         e.setNombre("nombre de estacionamiento json!");
         return e;
     }
-//
-//    @RequestMapping(value="/pruebalista", method = RequestMethod.GET)
-//    public @ResponseBody List<String> lista(HttpServletRequest request, ModelMap model) {
-//        List<String> l = new ArrayList<>();
-//        l.add("primer string");
-//        l.add("segundo string");
-//        l.add("tercer string");
-//        return l;
-//    }
 
 }
