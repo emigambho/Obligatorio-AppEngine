@@ -65,16 +65,32 @@
 		<%	}
 		%>
 		<br>-->
-		Comentarios:
+		Comentarios
 		<br>
-		<ul>
-		<%
-			for (Calificacion c : item.getCalificaciones()) { %>
-			<li>Puntaje: <%= c.getCalificacion()%>, Calificacion: <%= c.getComentario()%>, Usuario: <%= c.getUsuario()%></li>
-		<%	}
-		%>
-		</ul>
-		<br>
+		<div class="row">
+			<div class="col-md-6">
+			<table class="table table-striped">
+				<thead>
+				<tr>
+					<th>Puntaje</th>
+					<th>Comentario</th>
+					<th>Usuario</th>
+				</tr>
+				</thead>
+				<tbody>
+				<%
+					for (Calificacion c : item.getCalificaciones()) { %>
+				<tr>
+					<td><%=c.getCalificacion()%></td>
+					<td><%=c.getComentario()%></td>
+					<td><%=c.getUsuario()%></td>
+				</tr>
+				<%	}
+				%>
+				</tbody>
+			</table>
+			</div>
+		</div>
 		<br>
 		Agregar comentario:
 		<br>

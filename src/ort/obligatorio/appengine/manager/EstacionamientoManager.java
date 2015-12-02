@@ -66,7 +66,7 @@ public class EstacionamientoManager {
         datastore.put(entity);
     }
 
-    public static void guardarCambiosEstacionamiento(String nombreEstacionamiento, String nuevoNombre, Double nuevoPuntaje, Integer nuevaCapacidad, String nuevaApertura, String nuevoCierre) {
+    public static void guardarCambiosEstacionamiento(String nombreEstacionamiento, Double nuevoPuntaje, Integer nuevaCapacidad, String nuevaApertura, String nuevoCierre) {
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
         Query query = new Query("Estacionamiento");
@@ -77,7 +77,6 @@ public class EstacionamientoManager {
         Estacionamiento estacionamientoDesdeJson = new Gson().fromJson(json, Estacionamiento.class);
         datastore.delete(estacionamientoEnDataStore.getKey());
 
-        estacionamientoDesdeJson.setNombre(nuevoNombre);
         estacionamientoDesdeJson.setPuntaje(nuevoPuntaje);
         estacionamientoDesdeJson.setCapacidad(nuevaCapacidad);
         estacionamientoDesdeJson.setHoraDeApertura(nuevaApertura);

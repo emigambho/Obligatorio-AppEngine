@@ -58,7 +58,7 @@
 			Nombre: <%=item.getNombre() %>
 			<br><br>
 			Puntaje: <input type="text" style="width: 185px;" maxlength="3" name="puntaje" id="puntaje" value="<%=item.getPuntaje() %>"
-							pattern="([1-5]|[1-5][,.][0-9])" title="Valor numerico entre 1 y 5" required="required"/>
+						pattern="([1-5]|[1-5][,.][0-9])" title="Valor numerico entre 1 y 5" required="required"/>
 			<br><br>
 			Capacidad: <input type="text" style="width: 185px;" maxlength="10" name="capacidad" id="capacidad" value="<%=item.getCapacidad() %>"
 							  pattern="[0-9]{1,4}" title="Valor numerico entre 1 y 1000" required="required"/>

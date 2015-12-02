@@ -50,7 +50,7 @@ public class EstacionamientoController {
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
         String nombreEstacionamiento =  request.getParameter("originalName");
-        String nuevoNombre = request.getParameter("nombre");
+        //String nuevoNombre = request.getParameter("nombre");
         Double nuevoPuntaje = null;
         try {
             nuevoPuntaje = Double.parseDouble(request.getParameter("puntaje"));
@@ -66,7 +66,7 @@ public class EstacionamientoController {
         String nuevaApertura = request.getParameter("apertura");
         String nuevoCierre= request.getParameter("cierre");
 
-        EstacionamientoManager.guardarCambiosEstacionamiento(nombreEstacionamiento, nuevoNombre, nuevoPuntaje, nuevaCapacidad, nuevaApertura, nuevoCierre);
+        EstacionamientoManager.guardarCambiosEstacionamiento(nombreEstacionamiento, nuevoPuntaje, nuevaCapacidad, nuevaApertura, nuevoCierre);
 
         return new ModelAndView("redirect:adm");
 

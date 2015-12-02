@@ -74,43 +74,61 @@
       <br>
       Horario: Desde <%=seleccionado.getHoraDeApertura() %> hasta <%=seleccionado.getHoraDeCierre() %>
       <br>
-      Comentarios:
-        <ul>
+      Comentarios
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Puntaje</th>
+              <th>Comentario</th>
+            </tr>
+            </thead>
+            <tbody>
             <%
-                for (Calificacion c : seleccionado.getCalificaciones()) { %>
-                <li>Puntaje: <%= c.getCalificacion()%>, Calificacion: <%= c.getComentario()%></li>
+              for (Calificacion c : seleccionado.getCalificaciones()) { %>
+            <tr>
+              <td><%=c.getCalificacion()%></td>
+              <td><%=c.getComentario()%></td>
+            </tr>
             <%	}
             %>
-        </ul>
-      <br>
-      <br>
-      Agregar comentario:
-      <br>
-      <form method="post" action="agregarCalificacionUsuario" >
-        <input type="hidden" name="originalName" id="originalName" value="<%=seleccionado.getNombre() %>" />
-
-        Calificacion:
-        <input type="radio" name="calificacion" value="1" required="required">1
-        <input type="radio" name="calificacion" value="2" required="required">2
-        <input type="radio" name="calificacion" value="3" required="required">3
-        <input type="radio" name="calificacion" value="4" required="required">4
-        <input type="radio" name="calificacion" value="5" required="required">5
-
-        <table>
-          <tr>
-          </tr>
-          <tr>
-            <td>Comentario:</td>
-          </tr>
-          <tr>
-            <td>
-              <textarea cols="75" rows="5" maxlength="300" name="comentario" id="comentario" required="required"></textarea>
-            </td>
-          </tr>
-        </table>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+        Agregar comentario:
         <br>
-        <input type="submit" class="update btn btn-sm btn-default" title="agregarCalificacionUsuario" value="Agregar comentario" />
-      </form>
+        <form method="post" action="agregarCalificacionUsuario" >
+          <input type="hidden" name="originalName" id="originalName" value="<%=seleccionado.getNombre() %>" />
+
+          Calificacion:
+          <input type="radio" name="calificacion" value="1" required="required">1
+          <input type="radio" name="calificacion" value="2" required="required">2
+          <input type="radio" name="calificacion" value="3" required="required">3
+          <input type="radio" name="calificacion" value="4" required="required">4
+          <input type="radio" name="calificacion" value="5" required="required">5
+
+          <table>
+            <tr>
+            </tr>
+            <tr>
+              <td>Comentario:</td>
+            </tr>
+            <tr>
+              <td>
+                <textarea cols="75" rows="5" maxlength="300" name="comentario" id="comentario" required="required"></textarea>
+              </td>
+            </tr>
+          </table>
+          <br>
+          <input type="submit" class="update btn btn-sm btn-default" title="agregarCalificacionUsuario" value="Agregar comentario" />
+        </form>
+        </div>
+      </div>
 
       <script src="https://maps.googleapis.com/maps/api/js"></script>
       <script>
